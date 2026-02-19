@@ -36,5 +36,7 @@ models:
       +materialized: view
     Mart:
       +materialized: table
+      +schema: staging
     staging:
       +materialized: view
+      +schema: gold

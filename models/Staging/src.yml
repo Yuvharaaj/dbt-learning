@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: Stripe
+  - name: JAFFLE_SHOP_RAW_STRIPE
     database: RAW_DATABASE
-    schema: STRIPE
+    schema: JAFFLE_SHOP_RAW_STRIPE
     tables:
       - name: payment
         loaded_at_field: _batched_at
@@ -11,9 +11,9 @@ sources:
           warn_after: {count: 24, period: hour}
           error_after: {count: 12, period: day}
 
-  - name: JAFFLE_SHOP
+  - name: JAFFLE_SHOP_RAW_CO
     database: RAW_DATABASE
-    schema: JAFFLE_SHOP
+    schema: JAFFLE_SHOP_RAW_CO
     tables:
       - name: customers   # No freshness (no timestamp)
 
