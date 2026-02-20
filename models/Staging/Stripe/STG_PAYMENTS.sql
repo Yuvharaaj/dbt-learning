@@ -1,7 +1,9 @@
-    select 
-    ID as payment,
-    ORDERID as order_id,
-    PAYMENTMETHOD as payment_method,
-    STATUS,
-    {{cent_to_dollar('amount')}} as AMOUNT,
-    CREATED as created_at from {{source('JAFFLE_SHOP_RAW_STRIPE','payment')}}
+select 
+    id as payment_id,
+    orderid as order_id,
+    paymentmethod as payment_method,
+    status,
+    {{ cent_to_dollar('amount') }} as amount,
+    created as created_at,
+    _batched_at as loaded_at   -- ⭐ REQUIRED FOR INCREMENTAL
+from {{ source('JAFFLE_SHOP_RAW_STRIPE','payment') }}
